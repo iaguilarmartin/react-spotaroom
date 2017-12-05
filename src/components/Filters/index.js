@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import Button from '../Button';
 import './styles.css';
 
 class Filters extends Component {
@@ -53,7 +54,7 @@ class Filters extends Component {
 						<option value="true">Ascending</option>
 						<option value="false">Descending</option>
 					</select>
-					<button onClick={e => this.downloadJSON(e)}>Download JSON</button>
+					<Button type="primary" onButtonClick={e => this.downloadJSON(e)} text="Download JSON"></Button>
 				</form>
 			</section>
 		);
