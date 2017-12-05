@@ -1,0 +1,19 @@
+.properties {
+	background-color: #ff4398;
+	padding: 0 25px 25px 25px;
+	flex: 1;
+	overflow: auto;
+}
+
+article {
+	width: 100%;
+	height: 150px;
+	background-color: red;
+	margin-top: 25px;
+}
+
+@media screen and (max-width:750px) {
+	.properties {
+		overflow: unset;
+	}
+}

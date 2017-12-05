@@ -1,0 +1,30 @@
+header {
+	padding: 25px 20px;
+	margin: 35px 50px 15px 50px;
+	background-color: #fff;
+}
+
+.container {
+	margin: 0 50px;
+	display: flex;
+	flex: 1;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+@media screen and (min-width:1300px) {
+	.wrapper {
+		width: 1300px;
+		margin: auto;
+	}
+}
+
+@media screen and (max-width:750px) {
+	.container {
+		flex-direction: column;
+	}
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="602px" height="107px" viewBox="0 0 602 107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-1.000000, -14.000000)">
+            <ellipse id="Oval" fill="#000000" cx="276.75" cy="58" rx="45.25" ry="44"></ellipse>
+            <text id="SPOT-A-ROOm" font-family="LuckiestGuy-Regular, Luckiest Guy" font-size="100" font-weight="normal">
+                <tspan x="0" y="90" fill="#000000">SPOT</tspan>
+                <tspan x="230.712891" y="90" letter-spacing="-5" fill="#000000"> </tspan>
+                <tspan x="245.244141" y="90" fill="#FECA09">A</tspan>
+                <tspan x="307.841797" y="90" letter-spacing="-1.5" fill="#FECA09"> </tspan>
+                <tspan x="325.873047" y="90" fill="#000000">ROO</tspan>
+                <tspan x="514.007812" y="90" letter-spacing="-0.201388851" fill="#000000">m</tspan>
+            </text>
+            <text id="The-best-way-to-find" font-family="OpenSans, Open Sans" font-size="18.5" font-weight="normal" fill="#777777">
+                <tspan x="331" y="115.5">The best way to find your home</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
