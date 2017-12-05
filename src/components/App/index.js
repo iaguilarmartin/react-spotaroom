@@ -12,7 +12,11 @@ class App extends Component {
 					<NavigationBar/>
 				</header>
 				<div className="container">
-					<Filters/>
+					<Filters
+						onSortCriteriaChanged={ascending => { console.log(ascending); }}
+						onPropertyTypeSelected={propertyType => { console.log(propertyType); }}
+						onDownloadJSON={(propertyType, ascending) => { console.log(propertyType, ascending); }}
+					/>
 					<Properties/>
 				</div>
 			</div>

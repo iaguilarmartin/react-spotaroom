@@ -2,6 +2,7 @@
 	background-color: #543234;
 	width: 30%;
 	margin-right: 15px;
+	padding: 0 15px;
 }
 
 @media screen and (max-width:750px) {
