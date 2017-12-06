@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fileDownload from 'react-file-download';
 import NavigationBar from '../NavigationBar';
 import Filters from '../Filters';
 import Properties from '../Properties';
@@ -36,7 +37,9 @@ class App extends Component {
 	}
 
 	requestProperties(type) {
-		api.properties.get(type)
+		const city = this.getCityFromLocation();
+
+		api.properties.get(type, city)
 			.then(properties => {
 				this.setState(state => {
 					return {
@@ -53,6 +56,20 @@ class App extends Component {
 				a.monthlyPrice.minimumPrice - b.monthlyPrice.minimumPrice);
 	}
 
+	exportPropertiesToJSON() {
+		const data = JSON.stringify(this.state.properties);
+		fileDownload(data, 'properties.json');
+	}
+
+	getCityFromLocation() {
+		const regex = /^[a-zA-Z]+$/;
+		const path = window.location.pathname;
+		if (path && path.startsWith('/') && path.length > 1 && path.substring(1).match(regex)) {
+			return path.substring(1).toLowerCase();
+		}
+		return undefined;
+	}
+
 	render() {
 		const {properties, sortDescending, propertyType, loadingProperties} = this.state;
 
@@ -67,7 +84,7 @@ class App extends Component {
 						propertyType={propertyType}
 						onSortCriteriaChanged={descending => this.sortCriteriaChanged(descending)}
 						onPropertyTypeSelected={propertyType => this.propertyTypeChanged(propertyType)}
-						onDownloadJSON={(propertyType, ascending) => { console.log(propertyType, ascending); }}
+						onDownloadJSON={() => this.exportPropertiesToJSON()}
 					/>
 					<Properties loading={loadingProperties} items={properties}/>
 				</div>

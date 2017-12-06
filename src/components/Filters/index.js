@@ -14,7 +14,7 @@ const Filters = function({propertyType, sortDescending, onSortCriteriaChanged, o
 		<section className="filters">
 			<div className="filters-container">
 				<h2>Filtros</h2>
-				<form onSubmit={downloadJSON}>
+				<form>
 					<div className="form-group">
 						<label htmlFor="propertyTypeSelect">Property type</label>
 						<select id="propertyTypeSelect" value={propertyType} onChange={e => onPropertyTypeSelected(e.target.value)}>
@@ -32,7 +32,7 @@ const Filters = function({propertyType, sortDescending, onSortCriteriaChanged, o
 							<option value="true">Descending</option>
 						</select>
 					</div>
-					<Button type="primary" text="Download JSON"></Button>
+					<Button onButtonClick={downloadJSON} type="primary" text="Download JSON"></Button>
 				</form>
 			</div>
 		</section>

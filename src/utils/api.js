@@ -2,9 +2,9 @@ const baseUrl = 'http://localhost/SimpleProxy.php?url=https://www.spotahome.com/
 
 const API = {
 	properties: {
-		get(propertyType = '') {
+		get(propertyType = '', city = 'madrid') {
 			const urlParams = propertyType ? `?type[]=${propertyType}` : '';
-			return fetch(`${baseUrl}/markers/madrid${urlParams}`)
+			return fetch(`${baseUrl}/markers/${city}${urlParams}`)
 				.then(requestHandler)
 				.then(getPropertiesInformation)
 				.catch(errorHandler);

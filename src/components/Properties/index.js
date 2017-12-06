@@ -21,7 +21,7 @@ function renderLoading() {
 function renderNoResuls() {
 	return (
 		<div className="message-container">
-			<span>No properties have been found, try again with a different filters combination</span>
+			<span>No properties have been found</span>
 		</div>
 	);
 }
@@ -42,7 +42,7 @@ class Properties extends Component {
 
 		if (loading) {
 			component = renderLoading();
-		} else if (items) {
+		} else if (items && items.length > 0) {
 			component = renderPropertyList(items);
 		} else {
 			component = renderNoResuls();
