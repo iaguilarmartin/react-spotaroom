@@ -8,15 +8,15 @@ class Filters extends Component {
 		super(props);
 
 		this.state = {
-			propertyType: 'all',
-			sortAscending: true
+			propertyType: '',
+			sortDescending: false
 		};
 	}
 
 	sortCriteriaChanged(e) {
-		const sortAscending = e.target.value;
-		this.setState({sortAscending});
-		this.props.onSortCriteriaChanged(sortAscending);
+		const sortDescending = e.target.value;
+		this.setState({sortDescending});
+		this.props.onSortCriteriaChanged(sortDescending);
 	}
 
 	propertyTypeChanged(e) {
@@ -28,14 +28,14 @@ class Filters extends Component {
 	downloadJSON(e) {
 		e.preventDefault();
 
-		const {propertyType, sortAscending} = this.state;
-		this.props.onDownloadJSON(propertyType, sortAscending);
+		const {propertyType, sortDescending} = this.state;
+		this.props.onDownloadJSON(propertyType, sortDescending);
 
 		return false;
 	}
 
 	render() {
-		const {propertyType, sortAscending} = this.state;
+		const {propertyType, sortDescending} = this.state;
 
 		return (
 			<section className="filters">
@@ -43,16 +43,16 @@ class Filters extends Component {
 				<form>
 					<label htmlFor="propertyTypeSelect">Property type</label>
 					<select id="propertyTypeSelect" value={propertyType} onChange={e => this.propertyTypeChanged(e)}>
-						<option value="all">All</option>
+						<option value="">All</option>
 						<option value="apartments">Apartments</option>
 						<option value="rooms">Rooms</option>
 						<option value="studios">Studios</option>
 						<option value="residences">Residences</option>
 					</select>
 					<label htmlFor="sortCriteriaSelect">Sort by price</label>
-					<select id="sortCriteriaSelect" value={sortAscending} onChange={e => this.sortCriteriaChanged(e)}>
-						<option value="true">Ascending</option>
-						<option value="false">Descending</option>
+					<select id="sortCriteriaSelect" value={sortDescending} onChange={e => this.sortCriteriaChanged(e)}>
+						<option value="false">Ascending</option>
+						<option value="true">Descending</option>
 					</select>
 					<Button type="primary" onButtonClick={e => this.downloadJSON(e)} text="Download JSON"></Button>
 				</form>

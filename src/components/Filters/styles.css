@@ -1,8 +1,10 @@
 .filters {
-	background-color: #543234;
 	width: 30%;
 	margin-right: 15px;
 	padding: 0 15px;
+	box-shadow: 0 1px 4px #151a1d80;
+	background-color: #fff;
+	border-radius: 2px
 }
 
 @media screen and (max-width:750px) {

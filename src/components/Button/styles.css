@@ -1,10 +1,18 @@
 .button {
 	border: none;
-	padding: 0.7em 1.8em;
-	text-transform: uppercase;
+	padding: 1em 1.8em 0.5em 1.8em;
 	font-family: 'Luckiest Guy', cursive;
 	background-color: #eee;
 	border-bottom: 5px solid #999;
+	color: #666;
+	font-size: 10pt;
+	letter-spacing: 1px;
+	cursor: pointer;
+	user-select: none;
+}
+
+.button:hover {
+	background-color: #ccc;
 }
 
 .button.primary {
@@ -13,8 +21,16 @@
 	border-bottom-color: rgb(12, 109, 36);
 }
 
+.button.primary:hover {
+	background-color: rgb(50, 116, 40);
+}
+
 .button.secondary {
 	color: #fefefe;
 	background-color: rgb(241, 147, 25);
 	border-bottom-color: rgb(174, 98, 12);
+}
+
+.button.secondary:hover {
+	background-color: rgb(223, 133, 23);
 }

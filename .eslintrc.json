@@ -37,7 +37,11 @@
         "semi": [
             "error",
             "always"
-        ],
+		],
+		"no-console": [
+			"warn",
+			{ "allow": ["warn", "error"] }
+		],
         "no-var": "error"
     }
 }
