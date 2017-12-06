@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost/SimpleProxy.php?url=https://www.spotahome.com/api/public/listings/search';
+const baseUrl = 'https://www.spotahome.com/api/public/listings/search';
 
 const API = {
 	properties: {
