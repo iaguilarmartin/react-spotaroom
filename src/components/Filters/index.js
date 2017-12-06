@@ -39,23 +39,29 @@ class Filters extends Component {
 
 		return (
 			<section className="filters">
-				<h2>Filtros</h2>
-				<form>
-					<label htmlFor="propertyTypeSelect">Property type</label>
-					<select id="propertyTypeSelect" value={propertyType} onChange={e => this.propertyTypeChanged(e)}>
-						<option value="">All</option>
-						<option value="apartments">Apartments</option>
-						<option value="rooms">Rooms</option>
-						<option value="studios">Studios</option>
-						<option value="residences">Residences</option>
-					</select>
-					<label htmlFor="sortCriteriaSelect">Sort by price</label>
-					<select id="sortCriteriaSelect" value={sortDescending} onChange={e => this.sortCriteriaChanged(e)}>
-						<option value="false">Ascending</option>
-						<option value="true">Descending</option>
-					</select>
-					<Button type="primary" onButtonClick={e => this.downloadJSON(e)} text="Download JSON"></Button>
-				</form>
+				<div className="filters-container">
+					<h2>Filtros</h2>
+					<form>
+						<div className="form-group">
+							<label htmlFor="propertyTypeSelect">Property type</label>
+							<select id="propertyTypeSelect" value={propertyType} onChange={e => this.propertyTypeChanged(e)}>
+								<option value="">All</option>
+								<option value="apartments">Apartments</option>
+								<option value="rooms">Rooms</option>
+								<option value="studios">Studios</option>
+								<option value="residences">Residences</option>
+							</select>
+						</div>
+						<div className="form-group">
+							<label htmlFor="sortCriteriaSelect">Sort by price</label>
+							<select id="sortCriteriaSelect" value={sortDescending} onChange={e => this.sortCriteriaChanged(e)}>
+								<option value="false">Ascending</option>
+								<option value="true">Descending</option>
+							</select>
+						</div>
+						<Button type="primary" onButtonClick={e => this.downloadJSON(e)} text="Download JSON"></Button>
+					</form>
+				</div>
 			</section>
 		);
 	}

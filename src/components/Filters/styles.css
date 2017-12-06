@@ -1,15 +1,27 @@
 .filters {
 	width: 30%;
 	margin-right: 15px;
-	padding: 0 15px;
 	box-shadow: 0 1px 4px #151a1d80;
 	background-color: #fff;
 	border-radius: 2px
 }
 
-@media screen and (max-width:750px) {
+.filters-container {
+	padding: 0 25px 20px;
+}
+
+@media screen and (max-width:1050px) {
 	.filters {
 		width: 100%;
 		margin-bottom: 15px;
+		margin-right: 0;
 	}
 }
+
+@media screen and (max-width:1050px) and (min-width:751px) {
+	.form-group {
+		display: inline-block;
+		margin-right: 20px;
+	}
+}
+

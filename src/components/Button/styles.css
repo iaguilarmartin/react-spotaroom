@@ -1,6 +1,6 @@
 .button {
 	border: none;
-	padding: 1em 1.8em 0.5em 1.8em;
+	padding: 1em 1.8em 0.5em;
 	font-family: 'Luckiest Guy', cursive;
 	background-color: #eee;
 	border-bottom: 5px solid #999;
@@ -9,6 +9,7 @@
 	letter-spacing: 1px;
 	cursor: pointer;
 	user-select: none;
+	white-space: nowrap;
 }
 
 .button:hover {
@@ -33,4 +34,11 @@
 
 .button.secondary:hover {
 	background-color: rgb(223, 133, 23);
+}
+
+@media screen and (max-width:750px) {
+	.button {
+		font-size: 8pt;
+		padding: 1em 1.3em 0.5em;
+	}
 }

@@ -26,7 +26,7 @@ nav li a {
 	width: 360px;
 }
 
-@media screen and (max-width:990px) {
+@media screen and (max-width:1050px) {
 	nav {
 		flex-direction: column;
 	}
