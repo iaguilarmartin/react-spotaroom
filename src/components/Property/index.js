@@ -5,6 +5,10 @@ import Price from '../Price';
 import PropTypes from 'prop-types';
 
 const Property = function({item, rightToLeft}) {
+	if(!item) {
+		return null;
+	}
+
 	const {mainPhotoUrl:photo, title, monthlyPrice:price, currencySymbol} = item;
 
 	return (

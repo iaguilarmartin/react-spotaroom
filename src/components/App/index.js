@@ -37,7 +37,7 @@ class App extends Component {
 	}
 
 	requestProperties(type) {
-		const city = this.getCityFromLocation();
+		const city = this.getCityFromLocation(window.location);
 
 		api.properties.get(type, city)
 			.then(properties => {
@@ -50,10 +50,24 @@ class App extends Component {
 			});
 	}
 
-	sortProperties(properties, sortDescending) {
-		return properties.sort((a, b) =>
-			sortDescending ? b.monthlyPrice.minimumPrice - a.monthlyPrice.minimumPrice :
-				a.monthlyPrice.minimumPrice - b.monthlyPrice.minimumPrice);
+	sortProperties(properties, sortDescending = false) {
+		if (!properties || !Array.isArray(properties)) {
+			return null;
+		}
+
+		return properties.sort((a, b) => {
+			if (!a || !a.monthlyPrice || !a.monthlyPrice.minimumPrice) {
+				throw new Error('Invalid object inside properties array');
+			}
+
+			if (!b || !b.monthlyPrice || !b.monthlyPrice.minimumPrice) {
+				throw new Error('Invalid object inside properties array');
+			}
+
+			return sortDescending ?
+				b.monthlyPrice.minimumPrice - a.monthlyPrice.minimumPrice :
+				a.monthlyPrice.minimumPrice - b.monthlyPrice.minimumPrice;
+		});
 	}
 
 	exportPropertiesToJSON() {
@@ -61,9 +75,9 @@ class App extends Component {
 		fileDownload(data, 'properties.json');
 	}
 
-	getCityFromLocation() {
+	getCityFromLocation(location) {
 		const regex = /^[a-zA-Z]+$/;
-		const path = window.location.pathname;
+		const path = location && location.pathname;
 		if (path && path.startsWith('/') && path.length > 1 && path.substring(1).match(regex)) {
 			return path.substring(1).toLowerCase();
 		}
