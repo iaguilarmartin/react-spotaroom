@@ -6,15 +6,24 @@ import api from '../../utils/api';
 import './styles.css';
 
 class App extends Component {
+	constructor() {
+		super();
+
+		this.state = {
+			properties: null
+		};
+	}
 
 	componentDidMount() {
 		api.properties.get()
 			.then(properties => {
-				console.log(properties);
+				this.setState({properties});
 			});
 	}
 
 	render() {
+		const {properties} = this.state;
+
 		return (
 			<div className="wrapper">
 				<header>
@@ -26,7 +35,7 @@ class App extends Component {
 						onPropertyTypeSelected={propertyType => { console.log(propertyType); }}
 						onDownloadJSON={(propertyType, ascending) => { console.log(propertyType, ascending); }}
 					/>
-					<Properties/>
+					<Properties items={properties}/>
 				</div>
 			</div>
 		);
