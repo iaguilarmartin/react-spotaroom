@@ -6,6 +6,26 @@ You can also modify the URL path to get properties from different cities in this
 
 Data is retreived from **Spotahome** REST public API. If you try this project in localhost you may find CORS issues interacting with these APIs from the browser. A possible solution is using a proxy as intermediary to perform the requests.
 
+## Installation
+
+Install package dependencies
+
+```shell
+npm install
+```
+Create a production build
+
+```shell
+npm run build
+```
+
+Finally, serve Web site
+
+```shell
+npm install -g serve
+serve -s build
+```
+
 ## License
 
 The MIT License (MIT)
