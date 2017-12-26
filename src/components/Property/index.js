@@ -4,7 +4,7 @@ import Button from '../Button';
 import Price from '../Price';
 import PropTypes from 'prop-types';
 
-const Property = function({item, rightToLeft}) {
+const Property = function({item}) {
 	if(!item) {
 		return null;
 	}
@@ -12,7 +12,7 @@ const Property = function({item, rightToLeft}) {
 	const {mainPhotoUrl:photo, title, monthlyPrice:price, currencySymbol} = item;
 
 	return (
-		<article className={`property ${rightToLeft ? 'inverted' : ''}`}>
+		<article className="property">
 			<img src={photo} alt={title}/>
 			<div className="details">
 				<p>
@@ -31,8 +31,7 @@ const Property = function({item, rightToLeft}) {
 };
 
 Property.propTypes = {
-	item: PropTypes.object.isRequired,
-	rightToLeft: PropTypes.bool
+	item: PropTypes.object.isRequired
 };
 
 export default Property;

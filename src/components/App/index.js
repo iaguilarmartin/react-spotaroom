@@ -12,6 +12,7 @@ class App extends Component {
 
 		this.state = {
 			properties: null,
+			total: 0,
 			loadingProperties: true,
 			sortDescending: false,
 			propertyType: ''
@@ -22,29 +23,16 @@ class App extends Component {
 		this.requestProperties(this.state.propertyType);
 	}
 
-	sortCriteriaChanged(sortDescending) {
-		this.setState(state => {
-			return {
-				sortDescending,
-				properties: this.sortProperties(state.properties, sortDescending)
-			};
-		});
-	}
-
-	propertyTypeChanged(propertyType) {
-		this.setState({propertyType, properties: null, loadingProperties: true});
-		this.requestProperties(propertyType);
-	}
-
 	requestProperties(type) {
 		const city = this.getCityFromLocation(window.location);
 
 		api.properties.get(type, city)
-			.then(properties => {
+			.then(({total, items}) => {
 				this.setState(state => {
 					return {
 						loadingProperties: false,
-						properties: this.sortProperties(properties, state.sortDescending)
+						total,
+						properties: this.sortProperties(items, state.sortDescending)
 					};
 				});
 			});
@@ -70,11 +58,6 @@ class App extends Component {
 		});
 	}
 
-	exportPropertiesToJSON() {
-		const data = JSON.stringify(this.state.properties);
-		fileDownload(data, 'properties.json');
-	}
-
 	getCityFromLocation(location) {
 		const regex = /^[a-zA-Z]+$/;
 		const path = location && location.pathname;
@@ -84,8 +67,27 @@ class App extends Component {
 		return undefined;
 	}
 
+	exportPropertiesToJSON = () => {
+		const data = JSON.stringify(this.state.properties);
+		fileDownload(data, 'properties.json');
+	};
+
+	sortCriteriaChanged = (sortDescending) => {
+		this.setState(state => {
+			return {
+				sortDescending,
+				properties: this.sortProperties(state.properties, sortDescending)
+			};
+		});
+	};
+
+	propertyTypeChanged = (propertyType) => {
+		this.setState({propertyType, properties: null, loadingProperties: true, total: 0});
+		this.requestProperties(propertyType);
+	};
+
 	render() {
-		const {properties, sortDescending, propertyType, loadingProperties} = this.state;
+		const {properties, sortDescending, propertyType, loadingProperties, total} = this.state;
 
 		return (
 			<div className="wrapper">
@@ -96,11 +98,11 @@ class App extends Component {
 					<Filters
 						sortDescending={sortDescending}
 						propertyType={propertyType}
-						onSortCriteriaChanged={descending => this.sortCriteriaChanged(descending)}
-						onPropertyTypeSelected={propertyType => this.propertyTypeChanged(propertyType)}
-						onDownloadJSON={() => this.exportPropertiesToJSON()}
+						onSortCriteriaChanged={this.sortCriteriaChanged}
+						onPropertyTypeSelected={this.propertyTypeChanged}
+						onDownloadJSON={this.exportPropertiesToJSON}
 					/>
-					<Properties loading={loadingProperties} items={properties}/>
+					<Properties loading={loadingProperties} items={properties} total={total}/>
 				</div>
 			</div>
 		);

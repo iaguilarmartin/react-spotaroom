@@ -1,59 +1,51 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Property from '../Property';
 import './styles.css';
 
-function renderPropertyList(properties) {
-	return properties.map((property, index) => (
-		<Property key={property.id} item={property} rightToLeft={index % 2 === 0}>
-		</Property>
-	));
+function renderPropertyList(properties, total) {
+	return  (
+		<section className="properties-container">
+			<div className="results-count">Displaying {properties.length} results from {total} properties available</div>
+			<div className="properties">
+				{properties.map(property => (
+					<Property key={property.id} item={property}>
+					</Property>
+				))}
+			</div>
+		</section>
+	);
 }
 
 function renderLoading() {
 	return (
-		<div className="message-container">
+		<section className="message-container">
 			<span>Loading data....</span>
-		</div>
+		</section>
 	);
 }
 
 function renderNoResuls() {
 	return (
-		<div className="message-container">
+		<section className="message-container">
 			<span>No properties have been found</span>
-		</div>
-	);
-}
-
-function renderSection(component) {
-	return (
-		<section className="properties">
-			{component}
 		</section>
 	);
 }
 
-class Properties extends Component {
-	render() {
-		const { items, loading } = this.props;
-
-		let component = (<div></div>);
-
-		if (loading) {
-			component = renderLoading();
-		} else if (items && items.length > 0) {
-			component = renderPropertyList(items);
-		} else {
-			component = renderNoResuls();
-		}
-
-		return renderSection(component);
+const Properties = function ({ items, loading, total }) {
+	if (loading) {
+		return renderLoading();
+	} else if (items && items.length > 0) {
+		return renderPropertyList(items, total);
+	} else {
+		return renderNoResuls();
 	}
-}
+};
 
 Properties.propTypes = {
 	items: PropTypes.array,
+	total: PropTypes.number.isRequired,
 	loading: PropTypes.bool
 };
 

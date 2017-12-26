@@ -26,14 +26,12 @@ function errorHandler(err) {
 }
 
 function getPropertiesInformation({data}) {
-	let ids = data.map(property => `ids[]=${property.id}`);
-	if (ids.length > 30) {
-		ids = ids.slice(0, 30);
-	}
+	const total = data.length;
+	let ids = data.slice(0, 30).map(property => `ids[]=${property.id}`);
 
 	return fetch(`${baseUrl}/homecards_ids?${ids.join('&')}`)
 		.then(requestHandler)
-		.then(({data}) => data.homecards);
+		.then(({data}) => ({total, items: data.homecards}));
 }
 
 export default API;

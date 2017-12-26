@@ -7,15 +7,19 @@
 	box-shadow: 0 1px 4px #151a1d80;
 }
 
-.property.inverted {
-	background-color: #eee;
-}
-
 .property img {
 	height: 100%;
 }
 
 .property.inverted img {
+	order: 1;
+}
+
+.property:nth-child(even) {
+	background-color: #eee;
+}
+
+.property:nth-child(even) img {
 	order: 1;
 }
 
