@@ -16,8 +16,10 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
-    ],
+		"react",
+		"class-property"
+	],
+	"parser": "babel-eslint",
     "rules": {
         "curly": "error",
         "no-trailing-spaces": [
@@ -43,6 +45,6 @@
 			"warn",
 			{ "allow": ["warn", "error"] }
 		],
-        "no-var": "error"
+		"no-var": "error"
     }
 }
